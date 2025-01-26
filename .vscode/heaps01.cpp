@@ -31,8 +31,8 @@ class heap{
         }
         cout<<endl;
     }
-}
-    void deletefromheap(){
+};
+    void deletefromheap(int size ){
         if(size==0){
             cout<<"nothing to delete"<<endl;
             return;

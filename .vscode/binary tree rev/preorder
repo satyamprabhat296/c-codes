@@ -1,0 +1,18 @@
+// preorder means NLR
+#include<iostream>
+using namespace std;
+
+int preorder(root){
+    //base case
+    if(root==NULL)
+    return;
+
+cout<<root->data<<"";
+preorder(root->left);
+preorder(root->right);
+}
+int main(){
+    cout<< "preorder traversal is:"<<endl;
+    preorder(root);
+    return 0;
+}

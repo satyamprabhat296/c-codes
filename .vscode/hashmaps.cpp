@@ -1,23 +1,30 @@
 #include<iostream>
 #include<unordered_map>
+#include<map>
 using namespace std;
 int main(){
     //creation
-    unorderd_map<string, int> m;
+map<string,int>m;
     //insertion
     //1
-    pair<string, int> p= make_pair("love",3 );
+    pair<string,int>p=make_pair("babbar",3);
     m.insert(p);
-   
-    m["babbar"]=1;
-    //what will happen
-    m["mera"]=2;
-    cout<<m["love"]<<endl;
-    cout<<m["babbar"]<<endl;
-    cout<<m.at("babbar")<<endl;
-    cout<<m("unknownkey")<<endl;
-    //size
-    cout<<m.size()<<endl;
+    pair<string,int>pair2=("love",2);
+    m.insert(pair2);
 
+    m["mera"]=1;
+    m["mera"]=2;
+    //search
+    cout<<m["mera"]<<endl;
+    cout<<m.at("babbar")<<endl;
+    cout<<m.at("unknown key ")<<endl;
+    cout<<m.size()<<endl;
+    cout<<m.count("bro")<<endl;
+     map<string,int> :: iterator it = m.begin();
+    while(it!=m.end()){
+        cout<<it->first<<" "<<it->second<<endl;
+        it++;
+    }
     return 0;
+
 }

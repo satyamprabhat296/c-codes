@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #include<iostream>
 using namespace std;
 int partition(int arr[], int s,int e){

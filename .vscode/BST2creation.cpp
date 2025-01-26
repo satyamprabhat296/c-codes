@@ -1,26 +1,25 @@
 #include<iostream>
 #include<queue>
 using namespace std;
-
-class Node {
+class Node{
     public:
     int data;
     Node*left;
     Node*right;
-    Node(int d){
-        this->data=d;
-        this->left=NULL;
-        this->right=NULL;
-    }
+        Node(int d){
+            this->data=d;
+            this->left=NULL;
+            this->right=NULL;
+        }
 };
 void levelordertraversal(Node*root){
-    queue<Node*>q;
+    queue<Node*q>
     q.push(root);
     q.push(NULL);
     while(!q.empty()){
         Node*temp=q.front();
         q.pop();
-        if(temp==NULL){
+  if(temp==NULL){
             cout<<endl;
             if(!q.empty()){
 q.push(NULL);
@@ -39,7 +38,7 @@ q.push(NULL);
     }
 }
 Node*insertintobst(Node*root,int d){
-    //base case
+     //base case
     if(root==NULL){
         root=new Node(d);
         return root;
@@ -52,7 +51,6 @@ Node*insertintobst(Node*root,int d){
     }
     return root;
 }
-//DELETION FROM BST
 Node*deletefrombst(Node*root,int val){
     //base case 
     if(root==NULL){
