@@ -1,0 +1,26 @@
+// DP  COIN CHANGE ACCORDING TO GIVEN TARGET //
+
+
+class Solution {
+public:
+    vector<int> dp;
+    int f(vector<int>& v , int sum)
+    {
+        if(sum == 0) return 0;
+        if(dp[sum] != -1) return dp[sum];
+        int ans = INT_MAX;
+        for(int i = 0;i<v.size();i++)
+        {
+            if(v[i] <= sum && f(v,sum-v[i]) != INT_MAX) ans = min(ans , 1 + f(v, sum-v[i]));
+        }
+        return dp[sum] = ans;
+    }
+
+    int coinChange(vector<int>& coins, int amount) {
+        dp.clear();
+        dp.resize(amount +1 , -1);
+        int result = f(coins , amount);
+        if(result == INT_MAX) return -1;
+        else return result;
+    }
+};
