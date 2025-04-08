@@ -1,0 +1,26 @@
+
+// dp question frog jump //
+
+class Solution {
+  public:
+  int recurse(int start,int n,vector<int>&height,vector<int>&dp){
+      if(start>=n-1)return 0;
+      if(dp[start]!=-1){
+         return dp[start]; 
+      }
+  int jump1=abs(height[start]-height[start+1])+recurse(start+1,n,height,dp);
+  int jump2=INT_MAX;
+  if(start+2<n){
+   jump2=abs(height[start]-height[start+2])+recurse(start+2,n,height,dp);}
+   dp[start]=min(jump1,jump2);
+   
+   
+  return min(jump1,jump2);
+  }
+    int minCost(vector<int>& height) {
+    int n=height.size();
+   vector<int>dp(n,-1);
+    return recurse(0,n,height,dp);
+    } 
+    
+    };
