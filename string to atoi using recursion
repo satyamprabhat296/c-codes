@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int myAtoi(string s) {
+      
+        const int n = s.length();
+        int sig = 1, num = 0, i = 0;
+
+        while (i < n && s[i]==' ') i++;
+
+        if(i==n) return 0;
+        
+        if (s[i] == '-') {
+            sig = -1;
+            i++;
+        } else if(s[i] == '+') {
+            i++;
+        }
+
+        for ( ; i < n; i++) {
+            if (!isdigit(s[i])) {
+                break;
+            }
+
+            
+            int d = s[i] - '0';
+
+
+            
+            if (num > INT_MAX/10 || (num==(INT_MAX/10) && d>7)) {
+                return (sig==-1) ? INT_MIN : INT_MAX;
+            }
+            num = (num * 10) + d;
+        }
+
+        return num * sig;
+    }
+}
+;
