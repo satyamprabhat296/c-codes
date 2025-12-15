@@ -1,0 +1,30 @@
+class Solution {
+  public:
+    int cntWays(vector<int>& arr) {
+        // code here
+        int n= arr.size();
+        int evensum=0,oddsum=0;
+        for(int i=0;i<n;i++){
+            if(i%2==0) evensum+=arr[i];
+            else oddsum+=arr[i];
+        }
+        
+        int cnt=0;
+        int teven=0,todd=0;
+        for(int i=0;i<n;i++){
+            if(i%2==0){
+                teven+=arr[i];
+                int x= oddsum-todd;
+                int y= evensum-teven;
+                if(x+teven-arr[i]==todd+y)cnt++;
+            }
+            else{
+                todd+=arr[i];
+                int x=oddsum-todd;
+                int y=evensum-teven;
+                if(x+teven==todd+y-arr[i])cnt++;
+            }
+        }
+        return cnt;
+    }
+};
