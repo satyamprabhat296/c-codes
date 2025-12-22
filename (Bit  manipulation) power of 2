@@ -1,0 +1,8 @@
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        int result= n>0 && (n&n-1)==0;
+        return result;
+        
+    }
+};
