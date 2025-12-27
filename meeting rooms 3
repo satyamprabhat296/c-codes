@@ -1,0 +1,56 @@
+class Solution {
+public:
+    int mostBooked(int n, vector<vector<int>>& meetings) {
+        sort(meetings.begin(),meetings.end());
+
+
+        vector<int> count(n);
+        vector<long long> timer(n);
+
+        int itr=0;
+
+        while(itr<meetings.size()){
+            int s=meetings[itr][0];
+            int e= meetings[itr][1];
+            long long dur= e-s;
+
+
+            int room =-1;
+             long long early=LLONG_MAX;
+             int earlyroom=-1;
+
+
+             for(int i=0;i<n;i++){
+                if(timer[i]<early){
+                    early=timer[i];
+                    earlyroom=i;
+                }
+                if(timer[i]<=s){
+                    room=i;
+                    break;
+                }
+             }
+
+             if(room!=-1){
+                timer[room] = e;
+                count[room]++;
+             }
+             else{
+              timer[earlyroom] += dur;
+                count[earlyroom]++;
+            }
+
+            itr++;
+        }
+
+        int max = 0, idx = 0;
+        for (int i = 0; i < n; i++) {
+            if (count[i] > max) {
+                max = count[i];
+                idx = i;
+            }
+        }
+
+        return idx;
+    }
+};
