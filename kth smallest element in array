@@ -1,0 +1,7 @@
+class Solution {
+  public:
+    int kthSmallest(vector<int> &arr, int k) {
+        sort(arr.begin(), arr.end());  // sort once
+        return arr[k - 1];             // return kth smallest
+    }
+};
