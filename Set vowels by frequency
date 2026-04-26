@@ -1,0 +1,54 @@
+class Solution {
+public:
+    string sortVowels(string s) {
+     
+        vector<char> vowels;
+for(char c:s){
+     if(isVowel(c)){
+                vowels.push_back(c);
+     }
+}
+           unordered_map<char,int> freq;
+        unordered_map<char,int> firstpo;
+
+        
+
+        for(int i=0;i<s.size();i++){
+    if(isVowel(s[i])){
+        
+    
+           
+                freq[s[i]]++;
+        
+                if(!firstpo.count(s[i])){
+                    
+                    firstpo[s[i]]=i;
+                }
+            }
+        }
+sort(vowels.begin(),vowels.end(),[&] (char a,char b){
+
+       if(freq[a]!=freq[b])
+           return freq[a]>freq[b];
+    return firstpo[a]<firstpo[b];
+});
+        
+            
+        
+
+
+
+        
+       int j=0;
+        for(int i=0;i<s.size();i++){
+             if(isVowel(s[i])){
+                 s[i]=vowels[j++];
+            }
+            
+         }
+        return s;
+    }
+     bool isVowel(char c){
+             return c=='a' || c=='e'|| c=='i'|| c=='o' || c=='u';
+         }
+ };
