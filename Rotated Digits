@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int rotatedDigits(int n) {
+        int c=0;
+        for(int i=1;i<=n;i++){
+            int heck=i;
+            bool valid= true;
+
+            bool changed= false;
+
+            while(heck>0 && valid){
+                int digit = heck%10;
+
+                if(digit==3 || digit==4 || digit==7) valid =false;
+                                else if(digit == 2 || digit == 5 || digit == 6 || digit == 9) changed = true;
+                                heck/=10;
+
+            }
+                        if(valid && changed) c ++;
+
+        }
+        return c;
+    }
+};
